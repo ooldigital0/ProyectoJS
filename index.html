@@ -9,19 +9,35 @@
 <body>
     <h1>Simulador de Valor Final de Producto</h1>
     
-    <label for="precio">Precio del producto:</label>
-    <input type="number" id="precio" placeholder="Ingrese el precio del producto"><br><br>
-
-    <label for="impuesto">Impuesto (%):</label>
-    <input type="number" id="impuesto" placeholder="Ingrese el impuesto"><br><br>
-
-    <label for="descuento">Descuento (%):</label>
-    <input type="number" id="descuento" placeholder="Ingrese el descuento"><br><br>
-
-    <button onclick="calcularValorFinal()">Calcular</button><br><br>
-
-    <div id="resultado"></div>
-
     <script src="./proyecto.js"></script>
+    <script>
+        function calcularValorFinal() {
+            var precio = parseFloat(prompt("Ingrese el precio del producto"));
+            var impuesto = parseFloat(prompt("Ingrese el impuesto en porcentaje"));
+            var descuento = parseFloat(prompt("Ingrese el descuento en porcentaje"));
+
+            function calcularPrecioFinal(precio, impuesto, descuento) {
+                var impuestoAplicado = precio * (impuesto / 100);
+                var descuentoAplicado = precio * (descuento / 100);
+                var precioFinal = precio + impuestoAplicado - descuentoAplicado;
+                return precioFinal.toFixed(2);
+            }
+
+            var mensaje = '';
+            if (precio <= 0) {
+                mensaje = 'El precio del producto debe ser mayor que cero.';
+            } else {
+                var precioFinal = calcularPrecioFinal(precio, impuesto, descuento);
+                mensaje = 'El valor final del producto es: $' + precioFinal;
+            }
+
+            alert(mensaje); 
+            console.log(mensaje); 
+
+        }
+    </script>
+    
+    <button onclick="calcularValorFinal()">Calcular</button><br><br>
 </body>
 </html>
+
