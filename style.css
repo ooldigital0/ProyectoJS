@@ -6,28 +6,11 @@ body {
     padding: 20px;
 }
 
-/* Estilos para los encabezados */
 h1 {
     text-align: center;
     color: #333;
 }
 
-/* Estilos para las etiquetas y los campos de entrada */
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #666;
-}
-
-input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Estilos para el botón */
 button {
     padding: 10px 20px;
     border: none;
@@ -36,6 +19,7 @@ button {
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 button:hover {
@@ -50,5 +34,15 @@ button:hover {
     background-color: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     text-align: center;
+    color: #333;
+}
+
+/* Agregamos nuevos estilos */
+#preciosFinales {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     color: #333;
 }

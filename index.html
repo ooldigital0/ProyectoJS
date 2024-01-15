@@ -9,8 +9,13 @@
 <body>
     <h1>Simulador de Valor Final de Producto</h1>
     
-    <script src="./proyecto.js"></script>
+    <button onclick="calcularValorFinal()">Calcular</button><br><br>
+    <button onclick="mostrarPreciosFinales()">Mostrar Precios Finales</button> <!-- Nuevo botón para mostrar los precios finales -->
+    
     <script>
+        // Array para almacenar los precios finales
+        var preciosFinales = [];
+
         function calcularValorFinal() {
             var precio = parseFloat(prompt("Ingrese el precio del producto"));
             var impuesto = parseFloat(prompt("Ingrese el impuesto en porcentaje"));
@@ -29,15 +34,22 @@
             } else {
                 var precioFinal = calcularPrecioFinal(precio, impuesto, descuento);
                 mensaje = 'El valor final del producto es: $' + precioFinal;
+
+                // Agregar el precio final al array de preciosFinales
+                preciosFinales.push(parseFloat(precioFinal));
             }
 
-            alert(mensaje); 
-            console.log(mensaje); 
+            alert(mensaje);
+            console.log(mensaje);
+        }
 
+        // Función para mostrar los precios finales guardados en el array
+        function mostrarPreciosFinales() {
+            console.log("Precios Finales:");
+            console.log(preciosFinales);
         }
     </script>
-    
-    <button onclick="calcularValorFinal()">Calcular</button><br><br>
+
+    <script src="proyecto.js"></script>
 </body>
 </html>
-
