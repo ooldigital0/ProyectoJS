@@ -22,14 +22,43 @@ function calcularValorFinal() {
 
         // Agregar el precio final al array de preciosFinales
         preciosFinales.push(parseFloat(precioFinal));
+
+        // Mostrar los precios finales en el DOM
+        mostrarPreciosEnDOM();
+
+        // Almacenar precios finales en el LocalStorage
+        guardarPreciosEnLocalStorage();
     }
 
     alert(mensaje);
     console.log(mensaje);
 }
 
-// Función para mostrar los precios finales guardados en el array
-function mostrarPreciosFinales() {
-    console.log("Precios Finales:");
-    console.log(preciosFinales);
+// Función para mostrar los precios finales en el DOM
+function mostrarPreciosEnDOM() {
+    var preciosDiv = document.getElementById('preciosDiv');
+    if (!preciosDiv) {
+        preciosDiv = document.createElement('div');
+        preciosDiv.id = 'preciosDiv';
+        document.body.appendChild(preciosDiv);
+    }
+
+    preciosDiv.innerHTML = "<p>Precios Finales:</p><p>" + preciosFinales.join(', ') + "</p>";
 }
+
+// Función para guardar precios finales en el LocalStorage
+function guardarPreciosEnLocalStorage() {
+    localStorage.setItem('preciosFinales', JSON.stringify(preciosFinales));
+}
+
+// Función para cargar precios finales desde el LocalStorage al array
+function cargarPreciosDesdeLocalStorage() {
+    var preciosGuardados = localStorage.getItem('preciosFinales');
+    if (preciosGuardados) {
+        preciosFinales = JSON.parse(preciosGuardados);
+        mostrarPreciosEnDOM();
+    }
+}
+
+// Llamar a la función para cargar precios al cargar la página
+cargarPreciosDesdeLocalStorage();
