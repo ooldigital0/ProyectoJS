@@ -1,52 +1,95 @@
-/* Estilos para el cuerpo del documento */
+/* Estilos generales para el cuerpo del documento */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+    background-color: #f1f1f1;
     margin: 0;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-h1 {
+/* Estilos para el contenedor principal */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
     text-align: center;
-    color: #333;
+}
+
+/* Estilos para el encabezado */
+h1 {
+    color: #3498db;
+}
+
+/* Estilos para los campos de entrada y botones */
+.input-container {
+    margin-bottom: 15px;
+}
+
+input {
+    padding: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #2980b9;
 }
 
 button {
-    padding: 10px 20px;
+    padding: 15px 25px;
     border: none;
     border-radius: 5px;
-    background-color: #ff9900;
+    background-color: #e74c3c;
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
-    margin-bottom: 10px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #ffcc00;
+    background-color: #c0392b;
 }
 
-/* Estilos para el contenedor del resultado */
-#resultado {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    color: #333;
-}
-
-/* Agregamos nuevos estilos */
+/* Estilos para el contenedor de resultados */
 #preciosDiv {
     margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    color: #333;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #2ecc71;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    text-align: center;
 }
 
 #preciosDiv p {
     margin: 0;
+    font-weight: bold;
+}
+
+/* Estilos para SweetAlert2 */
+.swal2-popup {
+    font-size: 18px;
+}
+
+.swal2-title {
+    color: #e74c3c;
+}
+
+.swal2-icon {
+    color: #e74c3c;
+}
+
+.swal2-confirm {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.swal2-confirm:hover {
+    background-color: #c0392b;
 }

@@ -1,37 +1,64 @@
-// Array para almacenar los precios finales
+// Objeto para almacenar los precios finales
 var preciosFinales = [];
 
-function calcularValorFinal() {
-    var precio = parseFloat(prompt("Ingrese el precio del producto"));
-    var impuesto = parseFloat(prompt("Ingrese el impuesto en porcentaje"));
-    var descuento = parseFloat(prompt("Ingrese el descuento en porcentaje"));
+// Representación del producto como objeto
+var producto = {
+    precio: 0,
+    impuesto: 0,
+    descuento: 0
+};
 
-    function calcularPrecioFinal(precio, impuesto, descuento) {
-        var impuestoAplicado = precio * (impuesto / 100);
-        var descuentoAplicado = precio * (descuento / 100);
-        var precioFinal = precio + impuestoAplicado - descuentoAplicado;
-        return precioFinal.toFixed(2);
-    }
+// Función para calcular el precio final
+function calcularPrecioFinal(producto) {
+    var impuestoAplicado = producto.precio * (producto.impuesto / 100);
+    var descuentoAplicado = producto.precio * (producto.descuento / 100);
+    var precioFinal = producto.precio + impuestoAplicado - descuentoAplicado;
+    return precioFinal.toFixed(2);
+}
+
+// Función para validar que un valor sea un número mayor o igual a cero
+function esNumeroValido(valor) {
+    return !isNaN(valor) && valor >= 0;
+}
+
+// Función para calcular y mostrar el valor final del producto
+function calcularValorFinal() {
+    // Recoger los valores de los campos de entrada
+    producto.precio = parseFloat(document.getElementById('productoPrecioInput').value);
+    producto.impuesto = parseFloat(document.getElementById('productoImpuestoInput').value);
+    producto.descuento = parseFloat(document.getElementById('productoDescuentoInput').value);
 
     var mensaje = '';
-    if (precio <= 0) {
-        mensaje = 'El precio del producto debe ser mayor que cero.';
+
+    // Validamos que los datos sean válidos
+    if (
+        !esNumeroValido(producto.precio) ||
+        !esNumeroValido(producto.impuesto) ||
+        !esNumeroValido(producto.descuento)
+    ) {
+        mensaje = 'Ingrese datos válidos.';
     } else {
-        var precioFinal = calcularPrecioFinal(precio, impuesto, descuento);
+        // Calculamos el precio final
+        var precioFinal = calcularPrecioFinal(producto);
         mensaje = 'El valor final del producto es: $' + precioFinal;
 
-        // Agregar el precio final al array de preciosFinales
+        // Agregamos el precio final al array de preciosFinales
         preciosFinales.push(parseFloat(precioFinal));
 
-        // Mostrar los precios finales en el DOM
+        // Mostramos los precios finales en el DOM
         mostrarPreciosEnDOM();
 
-        // Almacenar precios finales en el LocalStorage
+        // Almacenamos precios finales en el LocalStorage
         guardarPreciosEnLocalStorage();
     }
 
-    alert(mensaje);
-    console.log(mensaje);
+    // Mostramos el mensaje con SweetAlert2
+    Swal.fire({
+        title: 'Resultado',
+        text: mensaje,
+        icon: 'info',
+        confirmButtonText: 'OK'
+    });
 }
 
 // Función para mostrar los precios finales en el DOM
@@ -60,5 +87,5 @@ function cargarPreciosDesdeLocalStorage() {
     }
 }
 
-// Llamar a la función para cargar precios al cargar la página
+// Llamo a la función para cargar precios al cargar la página
 cargarPreciosDesdeLocalStorage();
